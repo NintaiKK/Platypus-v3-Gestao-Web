@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platypus v2 - Gestão</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Cabeçalho -->
+        <header class="app-header">
+            <div class="header-left">
+                <h1><i class="fas fa-tools"></i> Platypus v2</h1>
+                <p class="subtitle">Sistema de Gestão para Oficina Mecânica</p>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span id="current-date"></span>
+                    <button class="btn-icon" title="Configurações">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Menu Lateral -->
+        <nav class="sidebar">
+            <div class="sidebar-menu">
+                <div class="menu-section">
+                    <h3><i class="fas fa-tachometer-alt"></i> Dashboard</h3>
+                    <button class="menu-item active" data-module="dashboard">
+                        <i class="fas fa-home"></i> Início
+                    </button>
+                </div>
+
+                <div class="menu-section">
+                    <h3><i class="fas fa-cogs"></i> Operações</h3>
+                    <button class="menu-item" data-module="os">
+                        <i class="fas fa-file-alt"></i> Ordens de Serviço
+                    </button>
+                    <button class="menu-item" data-module="clientes">
+                        <i class="fas fa-users"></i> Clientes
+                    </button>
+                    <button class="menu-item" data-module="veiculos">
+                        <i class="fas fa-car"></i> Veículos
+                    </button>
+                </div>
+
+                <div class="menu-section">
+                    <h3><i class="fas fa-warehouse"></i> Estoque</h3>
+                    <button class="menu-item" data-module="pecas">
+                        <i class="fas fa-cogs"></i> Peças
+                    </button>
+                    <button class="menu-item" data-module="estoque">
+                        <i class="fas fa-boxes"></i> Estoque
+                    </button>
+                </div>
+
+                <div class="menu-section">
+                    <h3><i class="fas fa-chart-line"></i> Financeiro</h3>
+                    <button class="menu-item" data-module="financeiro">
+                        <i class="fas fa-money-bill-wave"></i> Transações
+                    </button>
+                    <button class="menu-item" data-module="contas">
+                        <i class="fas fa-file-invoice-dollar"></i> Contas
+                    </button>
+                </div>
+
+                <div class="menu-section">
+                    <h3><i class="fas fa-file-invoice"></i> Notas</h3>
+                    <button class="menu-item" data-module="notas">
+                        <i class="fas fa-receipt"></i> Emissão
+                    </button>
+                </div>
+
+                <div class="menu-section">
+                    <h3><i class="fas fa-database"></i> Sistema</h3>
+                    <button class="menu-item" data-module="backup">
+                        <i class="fas fa-save"></i> Backup
+                    </button>
+                    <button class="menu-item" data-module="config">
+                        <i class="fas fa-sliders-h"></i> Configurações
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="system-status">
+                    <span class="status-dot online"></span>
+                    <span>Sistema Online</span>
+                </div>
+                <small>v2.1.01</small>
+            </div>
+        </nav>
+
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            <div id="module-content">
+                <!-- Conteúdo dinâmico dos módulos será carregado aqui -->
+                <div class="welcome-screen">
+                    <div class="welcome-card">
+                        <h2><i class="fas fa-tools"></i> Bem-vindo ao Platypus v2</h2>
+                        <p>Sistema completo para gestão de oficina mecânica</p>
+                        
+                        <div class="quick-stats">
+                            <div class="stat-card">
+                                <i class="fas fa-file-alt"></i>
+                                <h3 id="os-count">0</h3>
+                                <p>Ordens de Serviço</p>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-users"></i>
+                                <h3 id="clientes-count">0</h3>
+                                <p>Clientes</p>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-car"></i>
+                                <h3 id="veiculos-count">0</h3>
+                                <p>Veículos</p>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-boxes"></i>
+                                <h3 id="pecas-count">0</h3>
+                                <p>Peças em Estoque</p>
+                            </div>
+                        </div>
+
+                        <div class="quick-actions">
+                            <h3>Ações Rápidas</h3>
+                            <div class="action-buttons">
+                                <button class="btn-primary" data-module="os" data-action="nova">
+                                    <i class="fas fa-plus"></i> Nova OS
+                                </button>
+                                <button class="btn-secondary" data-module="clientes" data-action="novo">
+                                    <i class="fas fa-user-plus"></i> Novo Cliente
+                                </button>
+                                <button class="btn-secondary" data-module="veiculos" data-action="novo">
+                                    <i class="fas fa-car-side"></i> Novo Veículo
+                                </button>
+                                <button class="btn-secondary" data-module="pecas" data-action="nova">
+                                    <i class="fas fa-cog"></i> Nova Peça
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="recent-activity">
+                            <h3>Atividade Recente</h3>
+                            <div id="recent-list" class="activity-list">
+                                <!-- Lista de atividades será preenchida aqui -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Modal Genérico -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Título do Modal</h3>
+                    <button class="btn-close" id="modal-close">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Conteúdo do modal será injetado aqui -->
+                </div>
+                <div class="modal-footer" id="modal-footer">
+                    <!-- Botões do modal serão injetados aqui -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toast-container"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="database.js"></script>
+    <script src="modules/clientes.js"></script>
+    <script src="modules/veiculos.js"></script>
+    <script src="modules/pecas.js"></script>
+    <script src="modules/os.js"></script>
+    <script src="modules/financeiro.js"></script>
+    <script src="modules/nfse.js"></script>
+    <script src="pdf-generator.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
